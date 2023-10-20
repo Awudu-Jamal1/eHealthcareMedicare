@@ -3,8 +3,12 @@ import Button from "react-bootstrap/Button";
 import { useState } from "react";
 import productLink from "../services/productLink";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addPro } from "../features/details";
+
 
 function AddItem() {
+  const change =useDispatch()
 const navigate=useNavigate()
   const [spin, setSpin] = useState(false);
   const [inputs, setInput] = useState({
@@ -131,12 +135,13 @@ const navigate=useNavigate()
               setSpin(true);
               try {
                 await productLink.entry(inputs);
-                navigate('viewall')
+                navigate('/admin/viewall')
+                change(addPro(true))
+
               } catch (error) {
                 console.log("Error in Data Entry");
               }finally {
                 setSpin(false);
-
               }
             }}
           >{spin ? (

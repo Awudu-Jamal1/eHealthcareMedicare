@@ -8,7 +8,7 @@ initialState:{
     token:null,
     admin:null,
     alog:false,
-    cart:[]
+    addedP:false
 },
 reducers:{
     login:(state,action)=>{
@@ -34,7 +34,7 @@ reducers:{
         state.admin =action.payload
         state.alog=true
     },
-    addCart:(state,action)=>{
+    addPro:(state,action)=>{
         // const isItemInCart = state.cart.find((cartItem) => cartItem.id === action.payload.id);
 
         // if (isItemInCart) {
@@ -50,16 +50,16 @@ reducers:{
 
 
 
-         state.cart =action.payload
+         state.addedP =action.payload
     }
 }
 })
 
-export const {login,logout,setTokens,logged,addCart,alogin,alogout} = userInfo.actions
+export const {login,logout,setTokens,logged,addPro,alogin,alogout} = userInfo.actions
 export const selectUser =(state)=>state.user.user
 export const loggin =(state)=> state.user.logged
 export const selectAdmin =(state)=>state.user.admin
 export const logginA =(state)=> state.user.alog
-export const cartin =(state)=> state.user.cart
+export const cartin =(state)=> state.user.addedP
 
 export default userInfo.reducer;
