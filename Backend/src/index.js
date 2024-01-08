@@ -5,8 +5,10 @@ const cors = require("cors");
 const morgan = require("morgan");
 const { sequelize } = require("./models");
 const routes = require("./routes/main");
+const dotenv =require('dotenv')
+dotenv.config()
 
-const Port = 8081;
+const Port = process.env.PORT;
 
 const app = express();
 app.use(bodyParse.json());
