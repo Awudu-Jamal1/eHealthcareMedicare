@@ -16,7 +16,7 @@ function ShowData({addToCart,info,text,selectedCategory}) {
         return productNameMatches && categoryMatches;
       });
     return ( <div className="d-flex flex-wrap justify-content-center" >
-      {info.length == 0 &&<div><Spinner/></div>}
+      {/* {info?.length == 0 &&<div><Spinner/></div>} */}
       {(display.length==0 && info.length !==0)&& <div className="py-5" style={{fontSize:'3em'}}> Does Not Exist</div>}
          {display?.map((e,id)=>(
 
