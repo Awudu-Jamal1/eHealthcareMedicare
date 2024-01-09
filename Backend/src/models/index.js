@@ -6,14 +6,30 @@ const Sequelize = require('sequelize');
 const process = require('process');
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
-const config = require(__dirname + '/../config/config.json')[env];
+const configFile = path.join(__dirname, '/../config/config.json');
+let config = {};
+
+try {
+  config = require(configFile)[env];
+} catch (error) {
+  console.error(`Error loading configuration from ${configFile}:`, error.message);
+}
 const db = {};
 
 let sequelize;
 if (config.use_env_variable) {
   sequelize = new Sequelize(process.env[config.use_env_variable], config);
 } else {
-  sequelize = new Sequelize(config.database, config.username, config.password, config);
+  sequelize = new Sequelize(
+    process.env.DB_NAME || config.database,
+    process.env.DB_USER || config.username,
+    process.env.DB_PASSWORD || config.password,
+    {
+      host: process.env.DB_HOST || config.host,
+      dialect: config.dialect,
+      // ... other configuration options
+    }
+  );
 }
 
 fs
