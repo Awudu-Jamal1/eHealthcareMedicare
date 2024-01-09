@@ -17,7 +17,7 @@ try {
 const db = {};
 
 let sequelize;
-if (config.use_env_variable) {
+if (config && config.use_env_variable) {
   sequelize = new Sequelize(process.env[config.use_env_variable], config);
 } else {
   sequelize = new Sequelize(
@@ -26,7 +26,7 @@ if (config.use_env_variable) {
     process.env.DB_PASSWORD || config.password,
     {
       host: process.env.DB_HOST || config.host,
-      dialect: config.dialect,
+      dialect: process.env.Dialect || config.dialect,
       // ... other configuration options
     }
   );
