@@ -54,6 +54,9 @@ function UserNav() {
                   <Link className="nav-link" to="/">
                     Home
                   </Link>
+                  <Link className="nav-link" to="/admin">
+                    Admin
+                  </Link>
                 </li>
 
                 <li className="nav-item">
