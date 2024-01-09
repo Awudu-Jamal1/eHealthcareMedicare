@@ -6,6 +6,7 @@ function UserNav() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const logs = useSelector(loggin);
+  console.log(import.meta.env.VITE_APP_BASE_URL)
 
   return (
     <div>
