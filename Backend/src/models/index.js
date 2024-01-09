@@ -26,7 +26,9 @@ if (config && config.use_env_variable) {
     process.env.DB_PASSWORD || config.password,
     {
       host: process.env.DB_HOST || config.host,
-      dialect: process.env.Dialect || config.dialect,
+      dialect: process.env.Dialect
+      // || config.dialect
+      ,
       // ... other configuration options
     }
   );
