@@ -8,7 +8,10 @@ const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
 const configFile = path.join(__dirname, '/../config/config.json');
 let config = {};
+const dotenv =require('dotenv')
+dotenv.config()
 
+// console.log(process.env.DB_NAME )
 try {
   config = require(configFile)[env];
 } catch (error) {
@@ -26,8 +29,8 @@ if (config && config.use_env_variable) {
     process.env.DB_PASSWORD || config.password,
     {
       host: process.env.DB_HOST || config.host,
-      dialect: process.env.Dialect
-      // || config.dialect
+      dialect: process.env.DIALECT
+       || config.dialect
       ,
       // ... other configuration options
     }
